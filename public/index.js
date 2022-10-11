@@ -19,7 +19,7 @@
 
 
 $(".delete").click(function(){
-  console.log("delete buttong clicked");
+  console.log("delete button clicked");
   var id = $(this).attr("id");
   console.log(id);
   fetch(`players/player_id:${id}`, {

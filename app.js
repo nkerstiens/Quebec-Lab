@@ -15,8 +15,8 @@ MongoClient.connect(process.env.MONGO_URI, {
     useUnifiedTopology: true}) 
     .then(client =>{
       console.log('connected to db')
-      const db = client.db('roster')
-      const playersCollection = db.collection('players')  
+      const db = client.db('quebec')
+      const playersCollection = db.collection('quebec-numbers')  
       
       app.set('view engine', 'ejs')
       app.use(bodyParser.urlencoded({ extended: true }))
@@ -25,7 +25,7 @@ MongoClient.connect(process.env.MONGO_URI, {
       
 
       app.get('/', (req, res) => {
-        db.collection('players').find().toArray()
+        db.collection('quebec-numbers').find().toArray()
           .then(results => {
             res.render('index.ejs', { players: results})
           })
@@ -97,7 +97,7 @@ MongoClient.connect(process.env.MONGO_URI, {
     })
 
       app.listen(3000, function() {
-          console.log("listening");
+          console.log("Listening on Port 3000...");
       })
   })
 .catch(error => console.error(error))
