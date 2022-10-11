@@ -96,8 +96,10 @@ MongoClient.connect(process.env.MONGO_URI, {
       .catch(error => console.error(error))
     })
 
-      app.listen(3000, function() {
-          console.log("Listening on Port 3000...");
-      })
+    app.listen(process.env.PORT || 3000,
+      () => console.log(`server is running on port: ${process.env.PORT}` ));
+//       app.listen(3000, function() {
+//           console.log("Listening on Port 3000...");
+     // })
   })
 .catch(error => console.error(error))
