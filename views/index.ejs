@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<body>
+  <h1> Player Roster </h1>
+
+  <form action="/players" method="POST">
+    <input type="text" placeholder="name" name="name"> <br>
+    <input type="text" placeholder="position" name="position"> <br>
+    <input type="number" placeholder="number" name="number"> <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <br>
+
+  <ul class = "players">
+    <% for(var i = 0; i < players.length; i++) {%>
+    <li class = "player">
+        <span>Name: <%= players[i].name %></span><br>
+        <span>Position: <%= players[i].position %></span><br>
+        <span>Number: <%= players[i].number %></span><br>
+        <!-- this will be for delete -->
+        <!-- <button class = "delete" id = <%=players[i]._id%>> delete </button> -->
+        <!-- <form method="post" action="/deletePlayer/<%= players[i].name %>/<%= players[i]._id %>"> -->
+          <form method="post" action="/deletePlayer/<%= players[i]._id %>">
+          <input type="submit" onClick="return confirm('u sure bro`?')" />
+          <!-- <input type="hidden" name="_method" value="DELETE" /> -->
+      </form>
+        <div> <br> </div>
+    </li>
+    <% } %>
+  </ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="/index.js"></script>
+
+</html>
